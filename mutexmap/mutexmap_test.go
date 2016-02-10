@@ -56,16 +56,6 @@ func TestMutexMapContainsValue(t *testing.T) {
 	}
 }
 
-func TestMutexMapEntrySet(t *testing.T) {
-	m := New(1)
-	m.Put("a", "value")
-	actual := m.EntrySet()
-	expected := []interface{}{"value"}
-	if !reflect.DeepEqual(actual, expected) {
-		t.Fatal("unexpected values:", actual)
-	}
-}
-
 func TestMutexMapEquals(t *testing.T) {
 	m := New(1)
 	m.Put("a", "value")
@@ -141,5 +131,15 @@ func TestMutexMapDelete(t *testing.T) {
 	value := m.Get("a")
 	if value != nil {
 		t.Fatal("invalid value:", value)
+	}
+}
+
+func TestMutexMapValues(t *testing.T) {
+	m := New(1)
+	m.Put("a", "value")
+	actual := m.Values()
+	expected := []interface{}{"value"}
+	if !reflect.DeepEqual(actual, expected) {
+		t.Fatal("unexpected values:", actual)
 	}
 }

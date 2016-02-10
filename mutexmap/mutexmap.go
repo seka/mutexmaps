@@ -52,17 +52,6 @@ func (m *MutexMap) ContainsValue(item interface{}) bool {
 	return false
 }
 
-// EntrySet is returns the mappings contained in this map.
-func (m *MutexMap) EntrySet() []interface{} {
-	m.RLock()
-	items := make([]interface{}, 0, len(m.items))
-	for _, v := range m.items {
-		items = append(items, v)
-	}
-	m.RUnlock()
-	return items
-}
-
 // Equals is compares the specified object with this map for equality.
 func (m *MutexMap) Equals(src map[string]interface{}) bool {
 	m.RLock()
@@ -141,4 +130,15 @@ func (m *MutexMap) Len() int {
 	l := len(m.items)
 	m.RUnlock()
 	return l
+}
+
+// Values is returns a list of the values contained in this map.
+func (m *MutexMap) Values() []interface{} {
+	m.RLock()
+	items := make([]interface{}, 0, len(m.items))
+	for _, v := range m.items {
+		items = append(items, v)
+	}
+	m.RUnlock()
+	return items
 }
