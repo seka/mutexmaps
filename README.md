@@ -21,3 +21,9 @@ func main() {
 }
 ```
 
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2016 [shin sekaryo](https://github.com/seka)
+
