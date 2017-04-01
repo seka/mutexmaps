@@ -1,4 +1,4 @@
-package maputil
+package mutexmultimap
 
 import (
 	"reflect"
